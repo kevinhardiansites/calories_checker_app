@@ -8,9 +8,9 @@ load_dotenv()  # loading all the env variables
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def get_gemini_response(input_prompt, image):
-    model = genai.GenerativeModel('gemini-1.5-pro')  # Menggunakan model gemini-1.5-flash
+    model = genai.GenerativeModel('gemini-1.5-pro')  # Periksa apakah model ini mendukung analisis gambar
     try:
-        response = model.generate_content([input_prompt, image[0]])
+        response = model.generate_content([input_prompt] + image)  # Pastikan format ini benar
         return response.text
     except Exception as e:
         return f"Error: {str(e)}"
@@ -54,10 +54,11 @@ sebutkan persentase pembagian rasio karbohidrat, lemak, serat, gula, protein, mi
 """
 
 if submit:
-    try:
-        image_data = input_image_setup(uploaded_file)
-        response = get_gemini_response(input_prompt, image_data)
-        st.header("The Response is")
-        st.write(response)
-    except Exception as e:
-        st.error(f"An error occurred: {str(e)}")
+    with st.spinner("Analyzing image..."):
+        try:
+            image_data = input_image_setup(uploaded_file)
+            response = get_gemini_response(input_prompt, image_data)
+            st.header("The Response is")
+            st.write(response)
+        except Exception as e:
+            st.error(f"An error occurred: {str
