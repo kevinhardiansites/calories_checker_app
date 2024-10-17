@@ -9,10 +9,11 @@ load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def get_gemini_response(input_prompt, image_data):
-    # Create a new instance of the GenerativeModel with the latest Gemini model
-    model = genai.GenerativeModel('gemini-latest')  # Use the latest model name
-    response = model.generate_content([input_prompt, image_data[0]])
-    return response.text
+    # Create a new instance of the GenerativeModel with the supported Gemini model
+    model = genai.GenerativeModel('gemini-1.5-pro')  # Use a supported model name
+    response = model.generate_content([input_prompt, image_data])
+    return response
+
 
 def input_image_setup(uploaded_file):
     # Check if a file has been uploaded
