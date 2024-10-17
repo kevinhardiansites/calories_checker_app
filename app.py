@@ -17,7 +17,8 @@ def get_gemini_response(input_prompt, image_data):
     try:
         # Create a new instance of the GenerativeModel with the supported Gemini model
         model = genai.GenerativeModel('gemini-1.5-pro')  # Use a supported model name
-        response = model.generate_content([input_prompt, image_data])
+        # Pass the image data directly instead of wrapping it in a list
+        response = model.generate_content(input_prompt, image_data)
         return response
     except Exception as e:
         st.error(f"An error occurred while generating content: {str(e)}")
@@ -28,13 +29,10 @@ def input_image_setup(uploaded_file):
     if uploaded_file is not None:
         # Read file into bytes
         bytes_data = uploaded_file.getvalue()
-        image_parts = [
-            {
-                "mime_type": uploaded_file.type,  # Get the mime type of the uploaded file
-                "data": bytes_data
-            }
-        ]
-        return image_parts
+        return {
+            "mime_type": uploaded_file.type,  # Get the mime type of the uploaded file
+            "data": bytes_data
+        }
     else:
         raise FileNotFoundError("No file uploaded")
 
