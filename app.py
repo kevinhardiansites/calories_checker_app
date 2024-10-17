@@ -49,6 +49,7 @@ dalam format berikut ini:
 2. Item 2 - jumlah kalori
 ----
 ----
+Jika Anda tidak bisa menganalisisnya, tulis saja kandungan-kandungan yang anda mengerti dari gambar tersebut.
 Terakhir, Anda juga dapat menyebutkan apakah makanan tersebut sehat atau tidak dan juga
 sebutkan persentase pembagian rasio karbohidrat, lemak, serat, gula, protein, minyak, dan lainnya yang dibutuhkan dalam makanan kita.
 """
