@@ -41,16 +41,16 @@ if uploaded_file is not None:
 submit = st.button("Tell me the total calories")
 
 input_prompt = """
-You are an expert in nutrition where you need to see the food items from the image
-and calculate the total calories. Also, provide the details of every food item with calorie intake
-in the following format:
+Anda adalah seorang ahli nutrisi di mana Anda perlu melihat item makanan dari gambar
+dan menghitung total kalorinya. Selain itu, berikan rincian setiap item makanan dengan asupan kalori
+dalam format berikut ini:
 
-1. Item 1 - no of calories
-2. Item 2 - no of calories
+1. Item 1 - jumlah kalori
+2. Item 2 - jumlah kalori
 ----
 ----
-Finally, you can also mention whether the food is healthy or not and also
-mention the percentage split of the ratio of carbohydrates, fats, fibers, sugar, protein, oils, and other required in our diet.
+Terakhir, Anda juga dapat menyebutkan apakah makanan tersebut sehat atau tidak dan juga
+sebutkan persentase pembagian rasio karbohidrat, lemak, serat, gula, protein, minyak, dan lainnya yang dibutuhkan dalam makanan kita.
 """
 
 if submit:
