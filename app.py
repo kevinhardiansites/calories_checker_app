@@ -13,12 +13,12 @@ if api_key is None:
 
 genai.configure(api_key=api_key)
 
-def get_gemini_response(input_prompt, image_data):
+def get_gemini_response(image_data):
     try:
         # Create a new instance of the GenerativeModel with the supported Gemini model
         model = genai.GenerativeModel('gemini-1.5-pro')  # Use a supported model name
-        # Pass the image data directly instead of wrapping it in a list
-        response = model.generate_content(input_prompt, image_data)
+        # Pass the image data directly to the generate_content method
+        response = model.generate_content(image_data)
         return response
     except Exception as e:
         st.error(f"An error occurred while generating content: {str(e)}")
@@ -49,23 +49,12 @@ if uploaded_file is not None:
 
 submit = st.button("Tell me the total calories")
 
-input_prompt = """
-You are an expert nutritionist. Analyze the food items from the image
-and calculate the total calories. Provide the details of each food item with calorie intake
-in the following format:
-
-1. Item 1 - number of calories
-2. Item 2 - number of calories
-...
-Finally, mention whether the food is healthy or not and provide the percentage split of the ratio of carbohydrates, fats, fibers, sugar, protein, oils, and other required nutrients in our diet.
-"""
-
 # If submit button is clicked
 if submit:
     if uploaded_file is not None:
         with st.spinner("Processing..."):
             image_data = input_image_setup(uploaded_file)
-            response = get_gemini_response(input_prompt, image_data)
+            response = get_gemini_response(image_data)
             if response:
                 st.header("The Response is")
                 st.write(response)
