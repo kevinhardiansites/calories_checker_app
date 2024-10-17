@@ -6,14 +6,22 @@ from PIL import Image
 
 # Load environment variables
 load_dotenv()
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+api_key = os.getenv("GOOGLE_API_KEY")
+if api_key is None:
+    st.error("API key not found. Please set the GOOGLE_API_KEY environment variable.")
+    st.stop()
+
+genai.configure(api_key=api_key)
 
 def get_gemini_response(input_prompt, image_data):
-    # Create a new instance of the GenerativeModel with the supported Gemini model
-    model = genai.GenerativeModel('gemini-1.5-pro')  # Use a supported model name
-    response = model.generate_content([input_prompt, image_data])
-    return response
-
+    try:
+        # Create a new instance of the GenerativeModel with the supported Gemini model
+        model = genai.GenerativeModel('gemini-1.5-pro')  # Use a supported model name
+        response = model.generate_content([input_prompt, image_data])
+        return response
+    except Exception as e:
+        st.error(f"An error occurred while generating content: {str(e)}")
+        return None
 
 def input_image_setup(uploaded_file):
     # Check if a file has been uploaded
@@ -36,7 +44,7 @@ st.header("Calories Checker App")
 
 # File uploader for images
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
-image = ""   
+image = ""
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image.", use_column_width=True)
@@ -56,7 +64,12 @@ Finally, mention whether the food is healthy or not and provide the percentage s
 
 # If submit button is clicked
 if submit:
-    image_data = input_image_setup(uploaded_file)
-    response = get_gemini_response(input_prompt, image_data)
-    st.header("The Response is")
-    st.write(response)
+    if uploaded_file is not None:
+        with st.spinner("Processing..."):
+            image_data = input_image_setup(uploaded_file)
+            response = get_gemini_response(input_prompt, image_data)
+            if response:
+                st.header("The Response is")
+                st.write(response)
+    else:
+        st.error("Please upload an image before submitting.")
