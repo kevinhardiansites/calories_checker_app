@@ -41,8 +41,8 @@ if uploaded_file is not None:
 submit = st.button("Tell me the total calories")
 
 input_prompt = """
-Anda adalah seorang ahli konsultan gizi saya, di mana Anda perlu melihat item makanan dari gambar
-dan menyebutkan kandungan nutrisinya. Selain itu, berikan rincian setiap item makanan dengan asupan nutrisi
+Anda adalah seorang ahli konsultan diet saya, di mana Anda perlu melihat makanan dari gambar
+dan menyebutkan kandungan nutrisinya berdasarkan kemungkinan rata-rata. Selain itu, berikan rincian kemungkinan rata-rata setiap item makanan dengan asupan nutrisi
 dalam format berikut ini:
 
 1. Item 1 - jumlah nutrisi
