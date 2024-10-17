@@ -42,11 +42,11 @@ submit = st.button("Tell me the total calories")
 
 input_prompt = """
 Anda adalah seorang ahli nutrisi, di mana Anda perlu melihat item makanan dari gambar
-dan menghitung kira-kira jumlah kalorinya. Selain itu, berikan rincian setiap item makanan dengan asupan kalori
+dan menyebutkan kandungan nutrisinya. Selain itu, berikan rincian setiap item makanan dengan asupan nutrisi
 dalam format berikut ini:
 
-1. Item 1 - jumlah kalori
-2. Item 2 - jumlah kalori
+1. Item 1 - jumlah nutrisi
+2. Item 2 - jumlah nutrisi
 ----
 ----
 Jika Anda tidak bisa menganalisisnya, tulis saja kandungan-kandungan yang anda mengerti dari gambar tersebut.
