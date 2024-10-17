@@ -41,8 +41,8 @@ if uploaded_file is not None:
 submit = st.button("Tell me the total calories")
 
 input_prompt = """
-Anda adalah seorang ahli nutrisi di mana Anda perlu melihat item makanan dari gambar
-dan menghitung total kalorinya. Selain itu, berikan rincian setiap item makanan dengan asupan kalori
+Anda adalah seorang ahli nutrisi, di mana Anda perlu melihat item makanan dari gambar
+dan menghitung kira-kira jumlah kalorinya. Selain itu, berikan rincian setiap item makanan dengan asupan kalori
 dalam format berikut ini:
 
 1. Item 1 - jumlah kalori
