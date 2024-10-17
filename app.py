@@ -49,7 +49,8 @@ dalam format berikut ini:
 2. Item 2 - jumlah nutrisi
 ----
 ----
-Jika Anda tidak bisa menganalisisnya, tulis saja kandungan-kandungan yang anda mengerti dari gambar tersebut.
+Tulis saja kandungan-kandungan yang anda mengerti dari gambar tersebut.
+Anda tidak pelu menuliskan disclaimer di awal respon.
 Terakhir, Anda juga dapat menyebutkan apakah makanan tersebut sehat atau tidak dan juga
 sebutkan persentase pembagian rasio karbohidrat, lemak, serat, gula, protein, minyak, dan lainnya yang dibutuhkan dalam makanan kita.
 """
