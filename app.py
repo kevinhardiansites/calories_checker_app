@@ -61,4 +61,4 @@ if submit:
             st.header("The Response is")
             st.write(response)
         except Exception as e:
-            st.error(f"An error occurred: {str
+            st.error(f"An error occurred: {str(e)}")  
