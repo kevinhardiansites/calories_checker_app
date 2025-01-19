@@ -4,13 +4,15 @@ import os
 from dotenv import load_dotenv
 from PIL import Image
 
-load_dotenv()  # loading all the env variables
+# Load environment variables
+load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def get_gemini_response(input_prompt, image):
-    model = genai.GenerativeModel('gemini-1.5-pro')  # Periksa apakah model ini mendukung analisis gambar
+    model = genai.GenerativeModel('gemini-1.5-pro')  # Pastikan model ini mendukung analisis gambar
     try:
-        response = model.generate_content([input_prompt] + image)  # Pastikan format ini benar
+        # Mengirimkan input prompt dan gambar ke model
+        response = model.generate_content([input_prompt] + image)
         return response.text
     except Exception as e:
         return f"Error: {str(e)}"
@@ -28,7 +30,7 @@ def input_image_setup(uploaded_file):
     else:
         raise FileNotFoundError("No file uploaded")
 
-# Initialize streamlit app frontend
+# Initialize Streamlit app frontend
 st.set_page_config(page_title="Calories Checker App")
 
 st.header("Calories Checker App")
@@ -63,4 +65,4 @@ if submit:
             st.header("The Response is")
             st.write(response)
         except Exception as e:
-            st.error(f"An error occurred: {str(e)}")  
+            st.error(f"An error occurred: {str(e)}")
